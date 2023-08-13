@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <style>
+        body{
+            margin: 2px 500px 2px;
+            margin-right: 580px;
+        }
+        div{
+            padding: 5px;
+        }
+        .btn-circle.btn-sm {
+            background-color: grey;
+            color: #283747;
+            width: 70px;
+            height: 70px;
+            padding: 6px 6px;
+            border: 1px black;
+            border-radius: 40px;
+            font-size: 20px;
+            text-align: center;
+            border-collapse: collapse;
+        }
+        .btns{
+            background-color: grey;
+            color: #283747;
+            width: 150px;
+            height: 70px;
+            padding: 6px 0px;
+            border-radius: 40px;
+            border: 1px black;
+            font-size: 20px;
+            text-align: center;
+        }
+        #gr{
+            background-color: #EAEDED;
+        }
+        #or{
+            background-color: #F8C471;
+        }
+        input[type = textbox]{
+            height: 180px;
+            border: 1px black;
+            background-color: black;
+            font-size: 50px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class = "container" style = "background-color: black; border-radius: 17px;" >
+        <div class = "row">
+            <div class = "col-12"><input readonly id = "inp" type = "textbox" placeholder = "0" class = "form-control"></div>
+        </div>
+        <div class = "row">
+            <div class = "col-3"><button  class="btn-circle btn-sm" onclick = "click1('c')"  id = "gr">AC</button></div>
+            <div class = "col-3"><button  class="btn-circle btn-sm" onclick = "click1('d')"  id = "gr" >DC</button></div>
+            <div class = "col-3"><button  class="btn-circle btn-sm" onclick = "click1('%')"  id = "gr" >%</button></div>
+            <div class = "col-3"><button  class="btn-circle btn-sm" onclick = "click1('/')"  id = "or">/</button></div>
+        </div>
+
+        <div class = "row">
+            <div class = "col-3"><button  class="btn-circle btn-sm" onclick = "click1('7')" >7</button></div>
+            <div class = "col-3"><button  class="btn-circle btn-sm" onclick = "click1('8')" >8</button></div>
+            <div class = "col-3"><button  class="btn-circle btn-sm" onclick = "click1('9')" >9</button></div>
+            <div class = "col-3"><button  class="btn-circle btn-sm" onclick = "click1('*')"  id = "or" >*</button></div>
+        </div>
+
+        <div class = "row">
+            <div class = "col-3"><button  class="btn-circle btn-sm" onclick = "click1('4')" >4</button></div>
+            <div class = "col-3"><button  class="btn-circle btn-sm" onclick = "click1('5')" >5</button></div>
+            <div class = "col-3"><button  class="btn-circle btn-sm" onclick = "click1('6')" >6</button></div>
+            <div class = "col-3"><button  class="btn-circle btn-sm" onclick = "click1('-')"  id = "or" >-</button></div>
+        </div>
+
+        <div class = "row">
+            <div class = "col-3"><button  class="btn-circle btn-sm" onclick = "click1('1')" >1</button></div>
+            <div class = "col-3"><button  class="btn-circle btn-sm" onclick = "click1('2')" >2</button></div>
+            <div class = "col-3"><button  class="btn-circle btn-sm" onclick = "click1('3')" >3</button></div>
+            <div class = "col-3"><button  class="btn-circle btn-sm" onclick = "click1('+')"  id = "or" >+</button></div>
+        </div>
+
+        <div class = "row">
+            <div class = "col-6"><button  class="btns" onclick = "click1('0')">0</button></div>
+            <div class = "col-3"><button  class="btn-circle btn-sm" onclick = "click1('.')" >.</button></div>
+            <div class = "col-3"><button  class="btn-circle btn-sm" onclick = "click1('=')"  id = "or" >=</button></div>
+        </div>
+    </div>
+    <script>
+        function click1(x){
+            let val = document.getElementById('inp');
+            if(x == 'c')val.value = "";
+            else if(x == '=')val.value = eval(val.value);
+            else if(x == 'd'){
+                let vals = val.value;
+                let n = vals.length - 1;
+                for(let i = n;i>=0;i--){
+                    if(vals[i] == '.'){
+                        n = i;
+                        break;
+                    }
+                }
+                val.value = vals.slice(0,n);
+            }
+            else
+                val.value = val.value + x;
+        }
+    </script>
+</body>
+</html>
